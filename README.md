@@ -43,13 +43,13 @@ result : $data[$i]
 
 
 
-1.2.0 SELECT one row (LIMIT 1;)
+1.1.3 SELECT one row (LIMIT 1;)
 
 $data = db("SELECT * FROM `somedata` WHERE `id`=114 LIMIT 1;");
 
 result : $data['id']
 
-1.2.1 SELECT one field one row (LIMIT 1;)
+1.1.4 SELECT one field one row (LIMIT 1;)
 
 $data = db("SELECT `title` FROM `somedata` WHERE `id`=114 LIMIT 1;");
 
@@ -65,9 +65,12 @@ insert($table,$input);
 1.4.0 UPDATE
 
 $table = 'somedata'; $input['id'] = 4; $input['article'] = 'some blah blah AFTO'; $where = "WHERE `week` = 'Monday'";
+
 update($table,$input,$where);
 
 1.5.0 DELETE
+
+
 db("DELETE FROM `somedata` WHERE `id` LIKE 1;");
 
 Creator : George Katsoupakis
