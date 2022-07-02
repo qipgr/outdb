@@ -25,7 +25,7 @@ SOFTWARE.
 
 
 */
-$db = new mysqli('localhost', 'user', 'pass', 'social_name');
+$db = new mysqli('localhost', 'dbuser', 'dbpass', 'dbname');
 
 if($db->connect_errno > 0) die('Unable to connect to database [' . $db->connect_error . ']');
 
