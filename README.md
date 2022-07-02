@@ -25,6 +25,9 @@ SOFTWARE.
 
 
 SAMPLE : 
+
+
+
 SELECT many rows
 $data = db("SELECT * FROM `somedata` ");
 result : $data[$i]['id']
