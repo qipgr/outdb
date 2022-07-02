@@ -1,5 +1,5 @@
 # outdb
-outdb small php sql framework
+outdb small functional PHP mysql framework
 
 MIT License
 
