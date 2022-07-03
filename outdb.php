@@ -25,24 +25,24 @@ SOFTWARE.
 
 
 */
-$db = new mysqli('localhost', 'dbuser', 'dbpass', 'dbname');
+$db_con = new mysqli('localhost', 'dbuser', 'dbpass', 'dbname');
 
-if($db->connect_errno > 0) die('Unable to connect to database [' . $db->connect_error . ']');
+if($db_con->connect_errno > 0) die('Unable to connect to database [' . $db_con->connect_error . ']');
 
 
-  mysqli_set_charset($db, 'utf8');
+  mysqli_set_charset($db_con, 'utf8');
 
 function db($sql, $debug = false)
 {
-global $db;
+global $db_con;
 
     if ($debug == true)
         echo '<BR />debug it : ' . $sql . '<BR />';
     if (strpos(strtoupper($sql), 'SELECT') === false)
-       { $result = $db->query($sql);}
+       { $result = $db_con->query($sql);}
     else {
-if(!$result = $db->query($sql)){
-    die('There was an error running the query [' . $db->error . ']<br />MySql error. debug it : '.$sql);
+if(!$result = $db_con->query($sql)){
+    die('There was an error running the query [' . $db_con->error . ']<br />MySql error. debug it : '.$sql);
 }
         $line = false;
         if (strpos(strtoupper($sql), 'LIMIT 1;') !== false) $line = true;
@@ -161,10 +161,10 @@ function db_select_one($table, $fields = "*", $arg1 = '', $arg2 = '')
 
 function db_rows_num($sql)
 {
-    global $db;
+    global $db_con;
 
 
-if ($result=mysqli_query($db,$sql))
+if ($result=mysqli_query($db_con,$sql))
   {
 
   return mysqli_num_rows($result);
@@ -175,16 +175,16 @@ if ($result=mysqli_query($db,$sql))
 
 function escape_string($memberalue)
 {
-global $db;
-return $db->real_escape_string($memberalue);
+global $db_con;
+return $db_con->real_escape_string($memberalue);
 }
 
 function fields($sql)
 {
 
-global $db;
+global $db_con;
 
-if ($result=mysqli_query($db,$sql))
+if ($result=mysqli_query($db_con,$sql))
   {
   $finfo=mysqli_fetch_fields($result);
 
@@ -197,8 +197,8 @@ return $fields;
 
 function datacheck($data)
 {
-global $db;
-return array_map(array($db, 'real_escape_string'), $data);
+global $db_con;
+return array_map(array($db_con, 'real_escape_string'), $data);
 }
 
 
