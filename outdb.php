@@ -34,7 +34,7 @@ if($db->connect_errno > 0) die('Unable to connect to database [' . $db->connect_
 
 function db($sql, $debug = false)
 {
-global $_c,$db;
+global $db;
 
     if ($debug == true)
         echo '<BR />debug it : ' . $sql . '<BR />';
@@ -63,7 +63,6 @@ if(!$result = $db->query($sql)){
 function db_insert($table, $fields, $memberalues)
 {
 
-global $_c;
     if (is_array($fields)) {
         $count = count($fields);
 		$fields_query = ''; $memberalues_query = '';
@@ -89,7 +88,6 @@ global $_c;
 }
 function db_update($table, $fields, $memberalues, $where = '')
 {
-global $_c;
 $part_query = '';
     if (is_array($fields)) {
         $count = count($fields) - 1;
@@ -117,13 +115,13 @@ $part_query = '';
 }
 function db_delete($table, $field, $is)
 {
-global $_c;
+
     $sql = "DELETE FROM $table where $field = '" . escape_string($is) . "'";
     db($sql);
 }
 function db_select($table, $fields = "*", $arg1 = '', $arg2 = '', $arg3 = '')
 {
-global $_c;
+
     if (!is_array($fields))
         if ($fields == '*')
             $fields_query = $fields;
@@ -142,7 +140,7 @@ global $_c;
 }
 function db_select_one($table, $fields = "*", $arg1 = '', $arg2 = '')
 {
-global $_c;
+
     if (!is_array($fields))
         if ($fields == '*')
             $fields_query = $fields;
@@ -163,7 +161,7 @@ global $_c;
 
 function db_rows_num($sql)
 {
-    global $_c,$db;
+    global $db;
 
 
 if ($result=mysqli_query($db,$sql))
@@ -177,14 +175,14 @@ if ($result=mysqli_query($db,$sql))
 
 function escape_string($memberalue)
 {
-global $_c,$db;
+global $db;
 return $db->real_escape_string($memberalue);
 }
 
 function fields($sql)
 {
 
-global $_c,$db;
+global $db;
 
 if ($result=mysqli_query($db,$sql))
   {
@@ -199,7 +197,7 @@ return $fields;
 
 function datacheck($data)
 {
-global $_c,$db;
+global $db;
 return array_map(array($db, 'real_escape_string'), $data);
 }
 
