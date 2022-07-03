@@ -37,7 +37,7 @@ result : $data[$i]['id']
 
 1.1.2 - one field of all the table
 
-$data = db("SELECT `id` FROM `somedata` WHERE `user` LIKE `Giorgos'");
+$data = db("SELECT `id` FROM `somedata`");
 
 result : $data[$i]
 
