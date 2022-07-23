@@ -39,7 +39,7 @@ result : $data[$i]['id']
 
 $data = db("SELECT `id` FROM `somedata`");
 
-result : $data[$i]
+result : $data[$i]['id']
 
 
 
