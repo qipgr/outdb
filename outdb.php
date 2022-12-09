@@ -18,7 +18,7 @@ LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
-$db_con = new mysqli('sql639.your-server.de', 'outdba_1', 'eX5Cf8F2jAcHpWqa', 'outdba_db1');
+$db_con = new mysqli('localhost', 'dbuser', 'dbpass', 'dbname');
 
 if ($db_con->connect_errno > 0) die('Unable to connect to database [' . $db_con->connect_error . ']');
 
