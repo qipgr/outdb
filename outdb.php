@@ -90,7 +90,7 @@ function db_insert(string $table, array $fields, array $memberalues)
     $sql = "INSERT into `$table` ($fields_query) VALUES ($memberalues_query)";
     db($sql);
 }
-function db_update(string $table, array $fields, string $memberalues, string $where = '')
+function db_update(string $table, array $fields, array $memberalues, string $where = '')
 {
     $part_query = '';
     if (is_array($fields))
