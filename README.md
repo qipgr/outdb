@@ -1,77 +1,23 @@
-# outdb
-outdb small functional PHP mysql framework
+<div class="flex flex-1 text-base mx-auto gap-3 md:px-5 lg:px-1 xl:px-5 md:max-w-3xl lg:max-w-[40rem] xl:max-w-[48rem] group final-completion"><div class="flex-shrink-0 flex flex-col relative items-end"></div><div class="relative flex w-full flex-col lg:w-[calc(100%-115px)] agent-turn"><div class="flex-col gap-1 md:gap-3"><div class="flex flex-grow flex-col max-w-full"><div data-message-author-role="assistant" data-message-id="9fdf336a-7e73-4795-83ea-a05b9469e70e" class="min-h-[20px] text-message flex flex-col items-start gap-3 whitespace-pre-wrap break-words [.text-message+&amp;]:mt-5 overflow-x-auto"><div class="markdown prose w-full break-words dark:prose-invert light"><h3>outdb PHP database Utility Functions</h3><h4>1. Overview</h4><p>This set of PHP functions provides utility for interacting with a MySQL database. It includes functions for executing queries, inserting and updating records, retrieving data, and handling database connections.</p><h4>2. Database Connection</h4><ul><li><p><strong>$db_con:</strong></p><ul><li>Type: <code>mysqli</code> object</li><li>Description: The global MySQLi database connection object.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-variable">$db_con</span> = <span class="hljs-keyword">new</span> <span class="hljs-title function_ invoke__">mysqli</span>(<span class="hljs-string">'host'</span>, <span class="hljs-string">'username'</span>, <span class="hljs-string">'password'</span>, <span class="hljs-string">'dbname'</span>);
+</code></div></div></pre></li></ul><h4>3. Function: <code>db</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Execute SQL queries, handle results, and fetch data from the database.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$sql</code> (string): The SQL query to be executed.</li><li><code>$debug</code> (bool): Debug flag to enable query debugging (optional).</li></ul></li><li><p><strong>Returns:</strong></p><ul><li>For SELECT queries: Array of results or false if no data.</li><li>For other queries: True on success, false on failure.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-variable">$result</span> = <span class="hljs-title function_ invoke__">db</span>(<span class="hljs-string">"SELECT * FROM `example_table` WHERE id = 1"</span>);
+</code></div></div></pre></li></ul><h4>4. Function: <code>db_insert</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Insert records into a database table.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$table</code> (string): Name of the target table.</li><li><code>$fields</code> (array): Array of field names.</li><li><code>$values</code> (array): Array of corresponding values.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-title function_ invoke__">db_insert</span>(<span class="hljs-string">"users"</span>, [<span class="hljs-string">"username"</span>, <span class="hljs-string">"email"</span>], [<span class="hljs-string">"JohnDoe"</span>, <span class="hljs-string">"john@example.com"</span>]);
+</code></div></div></pre></li></ul><h4>5. Function: <code>db_update</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Update records in a database table.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$table</code> (string): Name of the target table.</li><li><code>$fields</code> (array): Array of field names.</li><li><code>$values</code> (array): Array of corresponding values.</li><li><code>$where</code> (string): WHERE clause for updating specific records (optional).</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-title function_ invoke__">db_update</span>(<span class="hljs-string">"users"</span>, [<span class="hljs-string">"username"</span>, <span class="hljs-string">"email"</span>], [<span class="hljs-string">"NewJohn"</span>, <span class="hljs-string">"newjohn@example.com"</span>], <span class="hljs-string">"WHERE id = 1"</span>);
+</code></div></div></pre></li></ul><h4>6. Function: <code>db_rows_num</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Get the number of rows returned by a SELECT query.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$sql</code> (string): The SELECT query.</li></ul></li><li><p><strong>Returns:</strong></p><ul><li>Number of rows.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-variable">$rowCount</span> = <span class="hljs-title function_ invoke__">db_rows_num</span>(<span class="hljs-string">"SELECT * FROM `example_table` WHERE status = 'active'"</span>);
+</code></div></div></pre></li></ul><h4>7. Function: <code>escape_string</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Escape special characters in a string for use in an SQL statement.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$value</code> (string): The string to be escaped.</li></ul></li><li><p><strong>Returns:</strong></p><ul><li>Escaped string.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-variable">$escapedString</span> = <span class="hljs-title function_ invoke__">escape_string</span>(<span class="hljs-string">"John's string"</span>);
+</code></div></div></pre></li></ul><h4>8. Function: <code>fields</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Get the field names of the result set from a SELECT query.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$sql</code> (string): The SELECT query.</li></ul></li><li><p><strong>Returns:</strong></p><ul><li>Array of field names.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-variable">$fieldNames</span> = <span class="hljs-title function_ invoke__">fields</span>(<span class="hljs-string">"SELECT * FROM `example_table`"</span>);
+</code></div></div></pre></li></ul><h4>9. Function: <code>insert</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Simplifies the insertion of records into a table based on an associative array of values.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$table</code> (string): Name of the target table.</li><li><code>$values</code> (array): Associative array of field-value pairs.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-title function_ invoke__">insert</span>(<span class="hljs-string">"users"</span>, [<span class="hljs-string">"username"</span> =&gt; <span class="hljs-string">"JohnDoe"</span>, <span class="hljs-string">"email"</span> =&gt; <span class="hljs-string">"john@example.com"</span>]);
+</code></div></div></pre></li></ul><h4>10. Function: <code>update</code></h4><ul><li><p><strong>Purpose:</strong></p><ul><li>Simplifies the update of records in a table based on an associative array of values.</li></ul></li><li><p><strong>Parameters:</strong></p><ul><li><code>$table</code> (string): Name of the target table.</li><li><code>$values</code> (array): Associative array of field-value pairs.</li><li><code>$where</code> (string): WHERE clause for updating specific records.</li></ul></li><li><p><strong>Usage:</strong></p><pre><div class="bg-black rounded-md"><div class="flex items-center relative text-gray-200 bg-gray-800 dark:bg-token-surface-primary px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>php</span><span class="" data-state="closed"></span></div><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-php"><span class="hljs-title function_ invoke__">update</span>(<span class="hljs-string">"users"</span>, [<span class="hljs-string">"username"</span> =&gt; <span class="hljs-string">"NewJohn"</span>, <span class="hljs-string">"email"</span> =&gt; <span class="hljs-string">"newjohn@example.com"</span>], <span class="hljs-string">"WHERE id = 1"</span>);
+</code></div></div></pre></li></ul>
+<br />
+<h3>The Select query</h3>
 
-MIT License
+<p>if (strpos(strtoupper($sql), 'SELECT') !== false) {  // Code block to process SELECT queries } This condition checks if the SQL query contains the 'SELECT' keyword. The check is case-insensitive. Line Limit Check php</p>
 
-Copyright (c) 2022 qipgr
+<p>$line = false;</p>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+<p>if (strpos(strtoupper($sql), 'LIMIT 1;') !== false) {  $line = true; } This block checks if the SQL query contains 'LIMIT 1;' indicating that only one result is expected ($line is set to true in such cases). Result Processing php</p>
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+<p>if (!$line) {  // Process multiple rows  while ($row = $result->fetch_assoc()) {  $data[] = (count($row) == 1) ? reset($row) : $row;  } } else {  // Process a single row  $row = $result->fetch_assoc();  $data = (!empty($row)) ? ((count($row) == 1) ? reset($row) : $row) : null; } If $line is false, indicating that multiple rows are expected, it iterates through the result set and formats each row. If $line is true, indicating that only one row is expected, it retrieves and formats the single row. Output The resulting data is stored in the $data variable, which can contain either an array of rows or a single formatted row based on the nature of the SQL query.</p>
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-
-
-1. SAMPLE : 
-
-
-
-1.1 SELECT many rows :
-
-1.1.1 - All the table
-$data = db("SELECT * FROM `somedata` ");
-
-result : $data[$i]['id']
-
-1.1.2 - one field of all the table
-
-$data = db("SELECT `id` FROM `somedata`");
-
-result : $data[$i]['id']
-
-
-
-1.1.3 SELECT one row (LIMIT 1;)
-
-$data = db("SELECT * FROM `somedata` WHERE `id`=114 LIMIT 1;");
-
-result : $data['id']
-
-1.1.4 SELECT one field one row (LIMIT 1;)
-
-$data = db("SELECT `title` FROM `somedata` WHERE `id`=114 LIMIT 1;");
-
-result : $data
-
-
-1.3.0 INSERT
-
-$table = 'somedata'; $input['id'] = 3; $input['article'] = 'some blah blah';
-
-insert($table,$input);
-
-1.4.0 UPDATE
-
-$table = 'somedata'; $input['id'] = 4; $input['article'] = 'some blah blah AFTO'; $where = "WHERE `week` = 'Monday'";
-
-update($table,$input,$where);
-
-1.5.0 DELETE
-
-
-db("DELETE FROM `somedata` WHERE `id` LIKE 1;");
-
-Creator : George Katsoupakis
-Quality Intrnet Productions qip.gr / outdb.com
+<p>Usage Include this code snippet in the part of your application where you are executing SQL queries. Utilize the $data variable to access the formatted result set. Note This code assumes that the SQL query is well-formed and follows standard conventions.</p>
+<h3>Important Note:</h3><ul><li>Always handle exceptions appropriately, especially in a production environment.</li><li>Ensure that database credentials are secure and not exposed in the code.</li></ul><p>This documentation provides a high-level overview of the functionality and usage of each function in the PHP code. It is recommended to refer to this documentation while working with the code for better understanding and maintenance.</p></div></div></div><div class="mt-1 flex justify-start gap-3 empty:hidden"></div></div></div></div>
