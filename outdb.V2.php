@@ -1,7 +1,7 @@
 <?php
 /*
 MIT License
-Copyright (c) 2022 qipgr
+Copyright (c) 2022 Georgios Katsoupakis
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
 in the Software without restriction, including without limitation the rights
@@ -27,7 +27,7 @@ if ($db_con->connect_errno > 0) {
 
 mysqli_set_charset($db_con, 'utf8mb4');
 
-function db(string $sql, bool $debug = false)
+function outdb(string $sql, bool $debug = false)
 {
     global $db_con;
 
@@ -74,7 +74,7 @@ function db_insert(string $table, array $fields, array $values)
     }, $values));
 
     $sql = "INSERT INTO `$table` ($fields_query) VALUES ($values_query)";
-    db($sql);
+    outdb($sql);
 }
 
 function db_update(string $table, array $fields, array $values, string $where = '')
@@ -85,7 +85,7 @@ function db_update(string $table, array $fields, array $values, string $where = 
     }, $fields, $values));
 
     $sql = "UPDATE `$table` SET $set_clause $where";
-    db($sql);
+    outdb($sql);
 }
 
 function db_rows_num(string $sql)
